@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Career Hub</title>
+    <style>
+        /* CSS: Styling for a clean, professional look */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        #input-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; 
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #28a745;
+            outline: none;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 25px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1e7e34;
+        }
+        #results-area {
+            padding: 20px 0;
+        }
+        .content-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .content-card {
+            background: white;
+            padding: 25px;
+            border-left: 6px solid #007bff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            min-height: 150px; /* Ensures consistent height */
+        }
+        .content-card h3 {
+            color: #007bff;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .content-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #28a745;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px solid #28a74530;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .content-card a:hover {
+            color: #1e7e34;
+            border-bottom: 2px solid #1e7e34;
+        }
+        #greeting-message {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e9f5ff;
+            border: 1px solid #007bff;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Personalized Career Hub</h1>
+        <p>Aggregate news, jobs, and guidance tailored to your future.</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="input-form">
+            <h2>👤 Enter Your Profile Details</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" min="16" max="100" placeholder="e.g., 25" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" required>
+                        <option value="">-- Select --</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="career">Career Path/Interest:</label>
+                    <input type="text" id="career" placeholder="e.g., Software Engineer, Marketing Analyst" required>
+                </div>
+                
+                <button type="submit">✨ Generate Personalized Insights</button>
+            </form>
+        </section>
+
+        <section id="results-area">
+            <h2>🎯 Your Personalized Feed</h2>
+            <p id="greeting-message">Fill out the form above and click 'Generate' to see your customized career feed.</p>
+
+            <div class="content-area">
+                
+                <div class="content-card">
+                    <h3>📰 Latest Industry News</h3>
+                    <div id="news-content">
+                        <p>Waiting for your input...</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>💼 Job Opportunities</h3>
+                    <div id="jobs-content">
+                        <p>Waiting for your input...</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3>💡 Career Guidance & Learning</h3>
+                    <div id="guidance-content">
+                        <p>Waiting for your input...</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p style="text-align: center; padding: 20px; color: #666; font-size: 0.85em;">
+            *Note: This interface generates personalized search links to simulate real-time data aggregation.
+            A live platform requires a server (backend) to connect to APIs (e.g., Google Custom Search API, Job APIs).
+        </p>
+    </footer>
+
+    <script>
+        // JavaScript: Logic for capturing input and generating personalized search links
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop the form from submitting normally
+
+            // 1. Collect Data
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const gender = document.getElementById('gender').value.trim();
+            const career = document.getElementById('career').value.trim();
+
+            // Display personalized greeting
+            document.getElementById('greeting-message').innerHTML = `
+                Hello, <strong>${name}</strong>! Below are customized search links for a 
+                <strong>${career}</strong> based on your profile (${age}, ${gender}). Click the links to explore!
+            `;
+            
+            // 2. Define Personalized Queries (Leveraging all inputs)
+            const newsQuery = `Latest news and technology trends for ${career}`;
+            const jobsQuery = `Entry-level or mid-career ${career} jobs for a person aged ${age} (remote or local)`;
+            const guidanceQuery = `Career roadmap and professional guidance for ${career}`;
+
+            // 3. Helper function to create a Google Search URL
+            const createSearchLink = (query, label) => {
+                const encodedQuery = encodeURIComponent(query);
+                const url = `https://www.google.com/search?q=${encodedQuery}`;
+                
+                // Return the HTML content to be injected into the cards
+                return `
+                    <p>Search Query: <strong>${query}</strong></p>
+                    <a href="${url}" target="_blank">${label} Search on Google 🔗</a>
+                `;
+            };
+            
+            // 4. Update Content Cards with Personalized Links
+            
+            document.getElementById('news-content').innerHTML = createSearchLink(
+                newsQuery, 
+                'Find Latest Industry News'
+            );
+
+            document.getElementById('jobs-content').innerHTML = createSearchLink(
+                jobsQuery, 
+                'Find Tailored Job Opportunities'
+            );
+
+            document.getElementById('guidance-content').innerHTML = createSearchLink(
+                guidanceQuery, 
+                'Explore Career Roadmaps & Learning'
+            );
+
+            // 5. Scroll to results for better UX
+            document.getElementById('results-area').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
